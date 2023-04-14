@@ -1,5 +1,6 @@
 package galaxite.content;
 
+import mindustry.content.UnitTypes;
 import mindustry.gen.UnitEntity;
 import mindustry.type.UnitType;
 
@@ -25,7 +26,7 @@ public class GalaxiteUnitTypes {
             playerControllable = false;
             envDisabled = 0;
             payloadCapacity = 0f;
-            //constructor = UnitEntity:car
+            constructor = UnitTypes.manifold.constructor;
         }};
     }
 }

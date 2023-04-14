@@ -1,17 +1,19 @@
 #the mod name as displayed in-game
-displayName: "Java Mod Template"
+displayName: "[blue]Galaxite[]"
+
+subtitle: "New Solar System!"
 
 #the internal name of your mod
-name: "example-java-mod"
+name: "galaxite"
 
 #your name
-author: "You"
+author: "Akinom"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "galaxite.GalaxiteMod"
 
 #the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description: "[red]WARNING[] this mod is still very new so everything wont be very balanced!\nAdds\n-More Planets (some are decoration so space isn't so lonely),\nNew Solar System!"
 
 #the mod version
 version: 1.0

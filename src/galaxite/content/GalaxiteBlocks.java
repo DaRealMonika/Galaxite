@@ -92,7 +92,7 @@ public class GalaxiteBlocks {
             size = 3;
             researchCostMultiplier = 1.5f;
             consumePower(8/60f);
-            consumeLiquids(LiquidStack.with(magma, 6/60, aethephus , 6/60));
+            consumeLiquids(LiquidStack.with(magma, 0.1f, aethephus , 0.1f));
         }};
 
         collectingPad = new UnitCargoUnloadPoint("collecting-pad"){{

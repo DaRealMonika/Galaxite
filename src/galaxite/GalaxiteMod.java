@@ -9,6 +9,9 @@ public class GalaxiteMod extends Mod{
 
     @Override
     public void loadContent(){
+        GalaxiteItems.load();
+        GalaxiteLiquids.load();
+        GalaxiteUnitTypes.load();
         GalaxiteBlocks.load();
     }
 

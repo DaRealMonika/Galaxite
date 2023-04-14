@@ -45,7 +45,7 @@ public class GalaxiteBlocks {
             bufferCapacity = 8;
         }};
 
-        scrapRouter = new Router("scrap=router"){{
+        scrapRouter = new Router("scrap-router"){{
             requirements(Category.distribution, with(Items.scrap, 3));
             health = 30;
             buildCostMultiplier = 3f;

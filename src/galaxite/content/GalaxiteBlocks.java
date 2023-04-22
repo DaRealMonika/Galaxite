@@ -7,9 +7,17 @@ import mindustry.world.*;
 import mindustry.world.blocks.distribution.*;
 import galaxite.content.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.production.AttributeCrafter;
+import mindustry.world.blocks.production.BeamDrill;
+import mindustry.world.blocks.production.Drill;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.storage.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.draw.DrawDefault;
+import mindustry.world.draw.DrawMulti;
+import mindustry.world.draw.DrawRegion;
+import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
 import static galaxite.content.GalaxiteItems.*;
@@ -177,6 +185,66 @@ public class GalaxiteBlocks {
             size = 2;
             itemCapacity = 100;
             researchCostMultiplier = 1.5f;
+        }};
+
+        ashCollector = new AttributeCrafter("ash-collector"){{
+            requirements(Category.production, with(Items.scrap, 10));
+            craftEffect = Fx.none;
+            outputItem = new ItemStack(cinderAsh , 1);
+            craftTime = 240f;
+            size = 1;
+            hasItems = true;
+            hasLiquids = true;
+            itemCapacity = 10;
+            group = BlockGroup.drills;
+            attribute = Attribute.get("ash");
+            researchCostMultiplier = 0.1f;
+            drawer = new DrawMulti(
+                    new DrawDefault(),
+                    new DrawRegion("-rotator", 20, true),
+                    new DrawRegion("-top")
+            );
+        }};
+
+        scrapDrill = new Drill("scrap-drill"){{
+            requirements(Category.distribution, with(Items.scrap, 5, cinderAsh, 9));
+            tier = 2;
+            drillTime = 430f;
+            size = 1;
+            blockedItem = magmaticCrystal;
+            consumeLiquid(Liquids.water, 0.04f).boost();
+        }};
+
+        scrapBeamDrill = new BeamDrill("scrap-beam-drill"){{
+            requirements(Category.distribution, with(Items.scrap, 5, cinderAsh, 9));
+            tier = 2;
+            drillTime = 180/0.5f;
+            optionalBoostIntensity = 2f;
+            size = 1;
+            range = 4;
+            fogRadius = 3;
+            consumePower(0.06f);
+            consumeLiquid(Liquids.water, 0.04f).boost();
+        }};
+
+        magmaticDrill = new Drill("magmatic-drill"){{
+            requirements(Category.distribution, with(Items.graphite, 10, magmaticCrystal, 18));
+            tier = 2;
+            drillTime = 400f;
+            size = 2;
+            consumeLiquid(Liquids.water, 0.04f).boost();
+        }};
+
+        magmaticBeamDrill = new BeamDrill("magmatic-beam-drill"){{
+            requirements(Category.distribution, with(Items.scrap, 16, magmaticCrystal, 18));
+            tier = 2;
+            drillTime = 120/0.5f;
+            optionalBoostIntensity = 4f;
+            size = 2;
+            range = 7;
+            fogRadius = 3;
+            consumePower(0.06f);
+            consumeLiquid(Liquids.water, 0.04f).boost();
         }};
 
         magmaRefiner = new GenericCrafter("magma-refiner"){{

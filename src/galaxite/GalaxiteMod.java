@@ -18,7 +18,7 @@ public class GalaxiteMod extends Mod{
         GalaxiteTeams.load();
         GalaxitePlanets.load();
         GalaxiteSctors.load();
-        GalaxiteTechTree.load();
+        //GalaxiteTechTree.load();
     }
 
 }

@@ -31,15 +31,15 @@ public class BurningWall extends Wall {
     public class BurningWallBuild extends WallBuild {
         @Override
         public void updateTile() {
-            if (burning) {
-                Units.nearbyEnemies(this.team, this.x, this.y, Vars.tilesize*range, unit -> {
-                    if (unit.hittable() && unit.targetable(this.team)) {
+            Units.nearbyEnemies(this.team, this.x, this.y, Vars.tilesize*range, unit -> {
+                if (unit.hittable() && unit.targetable(this.team)) {
+                    if (burning) {
                         unit.apply(StatusEffects.burning);
                     } else {
                         unit.damage(damage);
                     }
-                });
-            }
+                }
+            });
         }
     }
 }

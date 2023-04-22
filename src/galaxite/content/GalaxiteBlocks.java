@@ -74,6 +74,7 @@ public class GalaxiteBlocks {
             variants = 3;
             decoration = ashBoulder;
             wall = ashWall;
+            attributes.set(Attribute.get("ash"), 1);
         }};
 
         ashBoulder = new Prop("ash_boulder"){{

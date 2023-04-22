@@ -2,6 +2,7 @@ package galaxite;
 
 import mindustry.mod.*;
 import galaxite.content.*;
+import mindustry.world.meta.Attribute;
 
 public class GalaxiteMod extends Mod{
 
@@ -9,6 +10,8 @@ public class GalaxiteMod extends Mod{
 
     @Override
     public void loadContent(){
+        Attribute.add("ash");
+
         GalaxiteItems.load();
         GalaxiteLiquids.load();
         GalaxiteStatus.load();

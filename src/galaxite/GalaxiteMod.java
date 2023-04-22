@@ -11,8 +11,14 @@ public class GalaxiteMod extends Mod{
     public void loadContent(){
         GalaxiteItems.load();
         GalaxiteLiquids.load();
+        GalaxiteStatus.load();
         GalaxiteUnitTypes.load();
+        GalaxiteWeather.load();
         GalaxiteBlocks.load();
+        GalaxiteTeams.load();
+        GalaxitePlanets.load();
+        GalaxiteSctors.load();
+        GalaxiteTechTree.load();
     }
 
 }

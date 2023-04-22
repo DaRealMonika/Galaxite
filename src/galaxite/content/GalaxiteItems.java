@@ -1,6 +1,8 @@
 package galaxite.content;
 
 import arc.graphics.Color;
+import arc.struct.Seq;
+import mindustry.content.Items;
 import mindustry.type.Item;
 
 public class GalaxiteItems {
@@ -9,6 +11,8 @@ public class GalaxiteItems {
     //Thrygatis
 
     cinderAsh, magmaticCrystal, obsidian, metallicDust;
+
+    public static Seq<Item> thrygatisItems = new Seq<>(), thrygatisOnlyItems = new Seq<>();
 
     public static void load(){
         cinderAsh = new Item("cinder-ash", Color.valueOf("403434")){{
@@ -31,5 +35,8 @@ public class GalaxiteItems {
             cost = 0.5f;
             buildable = false;
         }};
+
+        thrygatisItems.addAll(Items.scrap, Items.graphite, cinderAsh, magmaticCrystal, obsidian, metallicDust);
+        thrygatisOnlyItems.addAll(cinderAsh, magmaticCrystal, obsidian, metallicDust);
     }
 }

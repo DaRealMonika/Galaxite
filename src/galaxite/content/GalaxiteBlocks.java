@@ -1,12 +1,16 @@
 package galaxite.content;
 
 import mindustry.content.*;
+import mindustry.graphics.CacheLayer;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.distribution.*;
 import galaxite.content.world.blocks.distribution.*;
-import mindustry.world.blocks.units.UnitCargoLoader;
-import mindustry.world.blocks.units.UnitCargoUnloadPoint;
+import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.storage.*;
+import mindustry.world.blocks.units.*;
+import mindustry.world.meta.BuildVisibility;
 
 import static galaxite.content.GalaxiteItems.*;
 import static galaxite.content.GalaxiteUnitTypes.*;
@@ -16,15 +20,88 @@ import static mindustry.type.ItemStack.with;
 public class GalaxiteBlocks {
     public static Block
 
+    //region environment - Thrygatis
+
+    ashWall, ashFloor, ashBoulder, redGraphiticWall, magmaFloor, oreMagmaticCrystal, wallOreMagmaticCrystal,
+
+    //turrets - Thrygatis
+
+    duster, kamiskyzer,
+
+    //defence - Thrygatis
+
+    magmaticWall, magmaticWallLarge,
+
     //region distribution - Thrygatis
 
     scrapConveyor, scrapJunction, scrapBridge, scrapRouter, magmaticDuct, magmaticBridge, magmaticOverflowDuct, magmaticUnderflowDuct, magmaticRouter,
 
     //special distribution - Thrygatis
 
-    deliveringPad, collectingPad;
+    deliveringPad, collectingPad,
+
+    //production - Thrygatis
+
+    ashCollector, scrapDrill, scrapBeamDrill, magmaticDrill, magmaticBeamDrill,
+
+    //power - Thrygatis
+
+    magmaticBeamNode, magmaticBeamNodeLarge, payloadDecayGenerator, liquidGenerator,
+
+    //factories - Thrygatis
+
+    magmaRefiner,
+
+    //cores - Thrygatis
+
+    aeriaton, celestial, aether;
 
     public static void load() {
+        ashWall = new StaticWall("ash-wall");
+
+        ashFloor = new Floor("ash-floor"){{
+            itemDrop = cinderAsh;
+            playerUnmineable = true;
+            speedMultiplier = 0.75f;
+            variants = 3;
+            decoration = ashBoulder;
+            wall = ashWall;
+        }};
+
+        ashBoulder = new Prop("ash_boulder"){{
+            variants = 2;
+        }};
+
+        redGraphiticWall = new StaticWall("red-graphitic-wall"){{
+            itemDrop = Items.graphite;
+            variants = 3;
+        }};
+
+        oreMagmaticCrystal = new OreBlock("ore-magmatic-crystal");
+
+        wallOreMagmaticCrystal = new OreBlock("wall-ore-magmatic-crystal"){{
+            wallOre = true;
+        }};
+
+        magmaFloor = new Floor("magma-floor"){{
+            speedMultiplier = 0.2f;
+            variants = 2;
+            status = StatusEffects.melting;
+            statusDuration = 240f;
+            liquidDrop = magma;
+            mapColor = magma.color;
+            isLiquid = true;
+            cacheLayer = CacheLayer.water;
+            albedo = 0.25f;
+            supportsOverlay = false;
+            liquidMultiplier = 0.3f;
+            drownTime = 60*1.2f;
+            damageTaken = 15f;
+            emitLight = true;
+            lightRadius = 40f;
+            lightColor = Liquids.slag.lightColor;
+        }};
+
         scrapConveyor = new BadConveyor("scrap-conveyor"){{
             requirements(Category.distribution, with(Items.scrap, 1, cinderAsh, 1));
             health = 30;
@@ -100,6 +177,50 @@ public class GalaxiteBlocks {
             size = 2;
             itemCapacity = 100;
             researchCostMultiplier = 1.5f;
+        }};
+
+        magmaRefiner = new GenericCrafter("magma-refiner"){{
+            requirements(Category.crafting, with(Items.scrap, 25, Items.graphite, 10, magmaticCrystal, 25));
+            outputItem = new ItemStack(obsidian, 1);
+            craftTime = 180f;
+            size = 2;
+            hasPower = true;
+            hasLiquids = true;
+            hasItems = true;
+            consumePower(70f/60f);
+            consumeLiquid(magma, 0.2f);
+        }};
+
+        aeriaton = new CoreBlock("aeriaton"){{
+            requirements(Category.effect, with(Items.scrap, 350, magmaticCrystal, 500));
+            isFirstTier = true;
+            unitType = venture;
+            health = 950;
+            itemCapacity = 2500;
+            size = 2;
+            unitCapModifier = 4;
+        }};
+
+        celestial = new CoreBlock("celestial"){{
+            requirements(Category.effect, with(Items.scrap, 1));
+            unitType = unit1;
+            health = 5500;
+            armor = 3f;
+            itemCapacity = 12000;
+            size = 3;
+            unitCapModifier = 24;
+            buildVisibility = BuildVisibility.hidden;
+        }};
+
+        aether = new CoreBlock("aether"){{
+            requirements(Category.effect, with(Items.scrap, 1));
+            unitType = unit2;
+            size = 4;
+            health = 8800;
+            armor = 5;
+            itemCapacity = 17500;
+            unitCapModifier = 36;
+            buildVisibility = BuildVisibility.hidden;
         }};
     }
 }

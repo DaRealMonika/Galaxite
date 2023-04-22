@@ -48,20 +48,20 @@ public class GalaxiteUnitTypes {
             envDisabled = 0;
             fogRadius = 0f;
             range = 5f;
-            abilities.add(new MendBuildings(30, 2.5f * 60f, venture.range * 8));
         }};
+        venture.abilities.add(new MendBuildings(30, 2.5f * 60f, venture.range * 8));
 
         unit1 = new UnitType("unit1"){{
             aiController = BuilderAI::new;
             constructor = UnitEntity::create;
-            abilities.add(new HealUnits(30, 2.5f * 60f, unit1.range * 8));
         }};
+        unit1.abilities.add(new HealUnits(30, 2.5f * 60f, unit1.range * 8));
 
         unit2 = new UnitType("unit2"){{
             aiController = BuilderAI::new;
             constructor = UnitEntity::create;
-            abilities.addAll(new MendBuildings(30, 2.5f * 60f, unit2.range * 8), new HealUnits(30, 2.5f * 60f, unit2.range * 8));
         }};
+        unit2.abilities.addAll(new MendBuildings(30, 2.5f * 60f, unit2.range * 8), new HealUnits(30, 2.5f * 60f, unit2.range * 8));
 
         heliDrop = new UnitType("heli-drop"){{
             isEnemy = false;

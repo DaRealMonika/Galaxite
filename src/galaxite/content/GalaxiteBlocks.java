@@ -1,28 +1,27 @@
 package galaxite.content;
 
+import galaxite.content.world.blocks.power.*;
+import galaxite.content.world.blocks.walls.*;
 import mindustry.content.*;
+import mindustry.entities.bullet.*;
 import mindustry.graphics.CacheLayer;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
 import galaxite.content.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.*;
-import mindustry.world.blocks.production.AttributeCrafter;
-import mindustry.world.blocks.production.BeamDrill;
-import mindustry.world.blocks.production.Drill;
-import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.power.*;
+import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.*;
 import mindustry.world.blocks.units.*;
-import mindustry.world.draw.DrawDefault;
-import mindustry.world.draw.DrawMulti;
-import mindustry.world.draw.DrawRegion;
-import mindustry.world.meta.Attribute;
-import mindustry.world.meta.BlockGroup;
-import mindustry.world.meta.BuildVisibility;
+import mindustry.world.draw.*;
+import mindustry.world.meta.*;
 
 import static galaxite.content.GalaxiteItems.*;
 import static galaxite.content.GalaxiteUnitTypes.*;
 import static galaxite.content.GalaxiteLiquids.*;
+import static galaxite.content.GalaxiteUtils.*;
 import static mindustry.type.ItemStack.with;
 
 public class GalaxiteBlocks {
@@ -77,7 +76,7 @@ public class GalaxiteBlocks {
             attributes.set(Attribute.get("ash"), 1);
         }};
 
-        ashBoulder = new Prop("ash_boulder"){{
+        ashBoulder = new Prop("ash-boulder"){{
             variants = 2;
         }};
 
@@ -86,9 +85,12 @@ public class GalaxiteBlocks {
             variants = 3;
         }};
 
-        oreMagmaticCrystal = new OreBlock("ore-magmatic-crystal");
+        oreMagmaticCrystal = new OreBlock("ore-magmatic-crystal"){{
+            itemDrop = magmaticCrystal;
+        }};
 
         wallOreMagmaticCrystal = new OreBlock("wall-ore-magmatic-crystal"){{
+            itemDrop = magmaticCrystal;
             wallOre = true;
         }};
 
@@ -109,6 +111,44 @@ public class GalaxiteBlocks {
             emitLight = true;
             lightRadius = 40f;
             lightColor = Liquids.slag.lightColor;
+        }};
+
+        duster = new ItemTurret("duster"){{
+            requirements(Category.turret, with(Items.scrap, 25, cinderAsh, 22));
+            recoil = 2f;
+            reload = 0.6f;
+            range = 60;
+            shootCone = 30f;
+            targetAir = true;
+            ammoUseEffect = Fx.none;
+            consumeCoolant(0.15f);
+            drawer = new DrawTurret("reinforced-");
+            ammo(
+                    cinderAsh, new BulletType(3.35f, 10){{
+                        ammoMultiplier = 3f;
+                        shootEffect = Fx.shootSmallFlame;
+                        collidesAir = true;
+                    }}
+            );
+        }};
+
+        magmaticWall = new BurningWall("magmatic-wall"){{
+            requirements(Category.defense, with(magmaticCrystal, 6));
+            burning = false;
+            damage = 0.1f;
+            range = 2f;
+            health = 400;
+            armor = 1f;
+            size = 1;
+        }};
+
+        magmaticWallLarge = new BurningWall("magmatic-wall-large"){{
+            requirements(Category.defense, with(magmaticCrystal, 24));
+            burning = true;
+            range = 2f;
+            health = 1800;
+            armor = 1f;
+            size = 2;
         }};
 
         scrapConveyor = new BadConveyor("scrap-conveyor"){{
@@ -248,6 +288,44 @@ public class GalaxiteBlocks {
             consumeLiquid(Liquids.water, 0.04f).boost();
         }};
 
+        magmaticBeamNode = new BeamNode("magmatic-beam-node"){{
+            requirements(Category.power, with(Items.graphite, 1, magmaticCrystal, 3));
+            size = 1;
+            range = 7;
+            laserColor1 = magmaticCrystal.color;
+            laserColor2 = magmaticOutline;
+        }};
+
+        magmaticBeamNodeLarge = new BeamNode("magmatic-beam-node-large"){{
+            requirements(Category.power, with(Items.graphite, 5, magmaticCrystal, 10));
+            size = 3;
+            range = 17;
+            laserColor1 = magmaticCrystal.color;
+            laserColor2 = magmaticOutline;
+        }};
+
+        payloadDecayGenerator = new PayloadDecayGenerator("payload-decay-generator"){{
+            requirements(Category.power, with(Items.scrap, 50, cinderAsh, 36));
+            maxPayloadSize = 3f;
+            deconstructSpeed = 2.5f;
+            size = 3;
+        }};
+
+        liquidGenerator = new PowerPump("liquid-generator"){{
+            requirements(Category.power, with(Items.graphite, 25, magmaticCrystal, 40));
+            powerProduction = 8f;
+            pumpAmount = 5/60;
+            size = 2;
+            drawer = new DrawMulti(
+                    new DrawDefault(),
+                    new DrawWarmupRegion(),
+                    new DrawRegion("-turbine", 2f),
+                    new DrawRegion("-top"),
+                    new DrawLiquidRegion()
+            );
+            consumePower(0.3f);
+        }};
+
         magmaRefiner = new GenericCrafter("magma-refiner"){{
             requirements(Category.crafting, with(Items.scrap, 25, Items.graphite, 10, magmaticCrystal, 25));
             outputItem = new ItemStack(obsidian, 1);
@@ -263,7 +341,7 @@ public class GalaxiteBlocks {
         aeriaton = new CoreBlock("aeriaton"){{
             requirements(Category.effect, with(Items.scrap, 350, magmaticCrystal, 500));
             isFirstTier = true;
-            unitType = venture;
+            unitType = ventur;
             health = 950;
             itemCapacity = 2500;
             size = 2;
@@ -272,7 +350,7 @@ public class GalaxiteBlocks {
 
         celestial = new CoreBlock("celestial"){{
             requirements(Category.effect, with(Items.scrap, 1));
-            unitType = unit1;
+            unitType = passage;
             health = 5500;
             armor = 3f;
             itemCapacity = 12000;
@@ -283,7 +361,7 @@ public class GalaxiteBlocks {
 
         aether = new CoreBlock("aether"){{
             requirements(Category.effect, with(Items.scrap, 1));
-            unitType = unit2;
+            unitType = paradise;
             size = 4;
             health = 8800;
             armor = 5;

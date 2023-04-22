@@ -3,7 +3,6 @@ package galaxite.content;
 import galaxite.content.abilities.HealUnits;
 import galaxite.content.abilities.MendBuildings;
 import mindustry.ai.types.BuilderAI;
-import mindustry.content.UnitTypes;
 import mindustry.gen.BuildingTetherPayloadUnit;
 import mindustry.gen.Sounds;
 import mindustry.gen.TimedKillUnit;
@@ -17,14 +16,14 @@ public class GalaxiteUnitTypes {
 
     //core - Thrygatis
 
-    venture, unit1, unit2,
+    ventur, passage, paradise,
 
     //special tether - Thrygatis
 
     heliDrop, comet;
 
     public static void load(){
-        venture = new UnitType("venture"){{
+        ventur = new UnitType("ventur"){{
             aiController = BuilderAI::new;
             isEnemy = false;
             outlineColor = magmaticOutline;
@@ -49,19 +48,19 @@ public class GalaxiteUnitTypes {
             fogRadius = 0f;
             range = 5f;
         }};
-        venture.abilities.add(new MendBuildings(30, 2.5f * 60f, venture.range * 8));
+        ventur.abilities.add(new MendBuildings(30, 2.5f * 60f, ventur.range * 8));
 
-        unit1 = new UnitType("unit1"){{
+        passage = new UnitType("passage"){{
             aiController = BuilderAI::new;
             constructor = UnitEntity::create;
         }};
-        unit1.abilities.add(new HealUnits(30, 2.5f * 60f, unit1.range * 8));
+        passage.abilities.add(new HealUnits(30, 2.5f * 60f, passage.range * 8));
 
-        unit2 = new UnitType("unit2"){{
+        paradise = new UnitType("paradise"){{
             aiController = BuilderAI::new;
             constructor = UnitEntity::create;
         }};
-        unit2.abilities.addAll(new MendBuildings(30, 2.5f * 60f, unit2.range * 8), new HealUnits(30, 2.5f * 60f, unit2.range * 8));
+        paradise.abilities.addAll(new MendBuildings(30, 2.5f * 60f, paradise.range * 8), new HealUnits(30, 2.5f * 60f, paradise.range * 8));
 
         heliDrop = new UnitType("heli-drop"){{
             isEnemy = false;

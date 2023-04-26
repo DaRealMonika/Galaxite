@@ -8,11 +8,11 @@ import mindustry.entities.abilities.Ability;
 import mindustry.gen.Unit;
 
 public class MendBuildings extends Ability {
-    public Integer amount;
-    public Float reload;
-    public Float range;
-    public Float b = 0f;
-    public Boolean healed;
+    public int amount;
+    public float reload;
+    public float range;
+    public float b;
+    public boolean healed;
 
     public MendBuildings(Integer am, Float rel, Float ran){
         amount = am;

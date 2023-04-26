@@ -8,13 +8,13 @@ import mindustry.entities.abilities.Ability;
 import mindustry.gen.Unit;
 
 public class HealUnits extends Ability {
-    public Integer amount;
-    public Float reload;
-    public Float range;
-    public Float b = 0f;
-    public Boolean healed;
+    public int amount;
+    public float reload;
+    public float range;
+    public float b;
+    public boolean healed;
 
-    public HealUnits(Integer am, Float rel, Float ran){
+    public HealUnits(Integer am, float rel, float ran){
         amount = am;
         reload = rel;
         range = ran;

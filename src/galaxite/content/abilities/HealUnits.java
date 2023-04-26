@@ -11,7 +11,7 @@ public class HealUnits extends Ability {
     public Integer amount;
     public Float reload;
     public Float range;
-    public Float b;
+    public Float b = 0f;
     public Boolean healed;
 
     public HealUnits(Integer am, Float rel, Float ran){

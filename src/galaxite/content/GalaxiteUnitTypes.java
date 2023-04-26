@@ -2,7 +2,7 @@ package galaxite.content;
 
 import galaxite.content.abilities.HealUnits;
 import galaxite.content.abilities.MendBuildings;
-import mindustry.ai.types.BuilderAI;
+import mindustry.ai.types.*;
 import mindustry.gen.BuildingTetherPayloadUnit;
 import mindustry.gen.Sounds;
 import mindustry.gen.TimedKillUnit;
@@ -78,6 +78,7 @@ public class GalaxiteUnitTypes {
             playerControllable = false;
             envDisabled = 0;
             payloadCapacity = 0f;
+            controller = u -> new CargoAI();
             constructor = BuildingTetherPayloadUnit::create;
         }};
 

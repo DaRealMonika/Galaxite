@@ -52,13 +52,55 @@ public class GalaxiteUnitTypes {
 
         passage = new UnitType("passage"){{
             aiController = BuilderAI::new;
+            isEnemy = false;
+            outlineColor = magmaticOutline;
+            lowAltitude = true;
+            flying = true;
+            mineSpeed = 3.5f;
+            mineHardnessScaling = true;
+            mineTier = 2;
+            buildSpeed = 1.5f;
+            drag = 0.05f;
+            speed = 2.3f;
+            rotateSpeed = 5f;
+            accel = 0.1f;
+            itemCapacity = 30;
+            health = 100;
+            engineOffset = 6;
+            hitSize = 12f;
+            alwaysUnlocked = true;
+            coreUnitDock = true;
             constructor = UnitEntity::create;
+            envDisabled = 0;
+            fogRadius = 0f;
+            range = 8f;
         }};
         passage.abilities.add(new HealUnits(30, 2.5f * 60f, passage.range * 8));
 
         paradise = new UnitType("paradise"){{
             aiController = BuilderAI::new;
+            isEnemy = false;
+            outlineColor = magmaticOutline;
+            lowAltitude = true;
+            flying = true;
+            mineSpeed = 3.5f;
+            mineHardnessScaling = true;
+            mineTier = 3;
+            buildSpeed = 1.5f;
+            drag = 0.05f;
+            speed = 2.3f;
+            rotateSpeed = 5f;
+            accel = 0.1f;
+            itemCapacity = 30;
+            health = 100;
+            engineOffset = 6;
+            hitSize = 12f;
+            alwaysUnlocked = true;
+            coreUnitDock = true;
             constructor = UnitEntity::create;
+            envDisabled = 0;
+            fogRadius = 0f;
+            range = 16f;
         }};
         paradise.abilities.addAll(new MendBuildings(30, 2.5f * 60f, paradise.range * 8), new HealUnits(30, 2.5f * 60f, paradise.range * 8));
 

@@ -28,6 +28,7 @@ public class PowerPump extends Pump {
     @Override
     public void setStats() {
         super.setStats();
+        stats.remove(Stat.output);
         stats.add(Stat.basePowerGeneration, powerProduction * 60, StatUnit.powerSecond);
     }
 

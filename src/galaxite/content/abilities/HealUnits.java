@@ -41,6 +41,6 @@ public class HealUnits extends Ability {
 
     @Override
     public String localized(){
-        return Core.bundle.format("ability.galaxite-mendunit", amount, reload/60, range/8);
+        return Core.bundle.format("ability.galaxite-healUnit", amount, reload/60, range/8);
     }
 }

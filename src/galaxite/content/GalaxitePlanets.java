@@ -28,7 +28,7 @@ public class GalaxitePlanets {
     thrygatis;
 
     public static void load() {
-        vopovin = new Planet("vopovin", Planets.sun, 8){{
+        vopovin = new Planet("vopovin", vopovin, 8, 1){{
             meshLoader = () -> new SunMesh(vopovin,
                     4, 5, 0.3, 2, 1.2, 1, 1.1f,
                     Color.valueOf("ffffff"), Color.valueOf("d7d3c6"), Color.valueOf("e1ba45"), Color.valueOf("e0c470"), Color.valueOf("dd9f9c"), Color.valueOf("ac8d8b"));

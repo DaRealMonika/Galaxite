@@ -46,6 +46,7 @@ public class GalaxitePlanets {
             );
             atmosphereColor = Color.valueOf("824069");
             landCloudColor = Color.valueOf("3c7141");
+            solarSystem = vopovin;
             atmosphereRadIn = 0;
             atmosphereRadOut = 0.5f;
             camRadius = 0.5f;

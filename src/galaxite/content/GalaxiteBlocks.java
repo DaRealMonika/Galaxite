@@ -4,6 +4,7 @@ import galaxite.content.world.blocks.power.*;
 import galaxite.content.world.blocks.walls.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
+import mindustry.gen.Sounds;
 import mindustry.graphics.CacheLayer;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -33,7 +34,7 @@ public class GalaxiteBlocks {
 
     //turrets - Thrygatis
 
-    duster, kamiskyzer, multiTurret,
+    duster, kamiskyzer, suffuse,
 
     //defence - Thrygatis
 
@@ -116,12 +117,13 @@ public class GalaxiteBlocks {
         duster = new ItemTurret("duster"){{
             requirements(Category.turret, with(Items.scrap, 25, cinderAsh, 22));
             recoil = 2f;
-            reload = 0.6f;
+            reload = 6f;
             range = 60;
             shootCone = 30f;
             targetAir = true;
             ammoUseEffect = Fx.none;
             consumeCoolant(0.15f);
+            shootSound = Sounds.flame;
             drawer = new DrawTurret("reinforced-");
             ammo(
                     cinderAsh, new BulletType(3.35f, 10){{
@@ -138,7 +140,7 @@ public class GalaxiteBlocks {
             buildVisibility = BuildVisibility.hidden;
         }};
 
-        multiTurret = new ItemTurret("multi-turret"){{
+        suffuse = new ItemTurret("suffuse"){{
             requirements(Category.turret, with(Items.scrap, 1));
             size = 3;
             buildVisibility = BuildVisibility.hidden;

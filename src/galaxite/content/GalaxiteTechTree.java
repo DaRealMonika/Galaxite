@@ -35,10 +35,10 @@ public class GalaxiteTechTree {
                 });
             });
 
-            node(aeriaton, () -> {
+            node(aeriaton, () -> {/*
                 node(celestial, () -> {
                     node(aether);
-                });
+                });*/
             });
 
 
@@ -72,9 +72,11 @@ public class GalaxiteTechTree {
                     });
                 });
             });
-            node(duster, () -> {
-                node(kamiskyzer, () -> {
-                });
+            node(duster, () -> {/*
+                node(suffuse, () -> {
+                    node(kamiskyzer, () -> {
+                    });
+                };*/
             });
             node(magmaticWall, () -> {
                 node(magmaticWallLarge, () -> {

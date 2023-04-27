@@ -14,7 +14,7 @@ public class MendBuildings extends Ability {
     public float b;
     public boolean healed;
 
-    public MendBuildings(Integer am, Float rel, Float ran){
+    public MendBuildings(int am, float rel, float ran){
         amount = am;
         reload = rel;
         range = ran;

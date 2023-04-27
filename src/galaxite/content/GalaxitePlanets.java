@@ -1,13 +1,14 @@
 package galaxite.content;
 
 import arc.graphics.Color;
+import galaxite.content.world.planets.*;
 import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.graphics.g3d.*;
-import mindustry.maps.planet.SerpuloPlanetGenerator;
 import mindustry.type.ItemStack;
 import mindustry.type.Planet;
 import mindustry.type.Weather;
+import mindustry.world.meta.Attribute;
 import mindustry.world.meta.Env;
 
 import static galaxite.content.GalaxiteBlocks.*;
@@ -38,7 +39,7 @@ public class GalaxitePlanets {
         vopovin.parent = null;
 
         thrygatis = new Planet("thrygatis", vopovin, 1, 2){{
-            generator = new SerpuloPlanetGenerator();
+            generator = new ThrygatisPlanetGenerator();
             meshLoader = () -> new HexMesh(thrygatis, 2);
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(thrygatis, 2, 0.15f, 0.14f, 5,
@@ -65,6 +66,7 @@ public class GalaxitePlanets {
             totalRadius += 2.6f;
             hiddenItems.addAll(Vars.content.items()).removeAll(thrygatisItems);
             defaultEnv = Env.scorching | Env.terrestrial;
+            defaultAttributes.set(Attribute.heat, 1.7f);
             ruleSetter = r -> {
                 r.waveTeam = yperia;
                 r.onlyDepositCore = true;

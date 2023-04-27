@@ -132,9 +132,17 @@ public class GalaxiteBlocks {
             );
         }};
 
-        kamiskyzer = new LaserTurret("kamiskyzer");
+        kamiskyzer = new LaserTurret("kamiskyzer"){{
+            requirements(Category.turret, with(Items.scrap, 1));
+            size = 2;
+            buildVisibility = BuildVisibility.hidden;
+        }};
 
-        multiTurret = new ItemTurret("multi-turret");
+        multiTurret = new ItemTurret("multi-turret"){{
+            requirements(Category.turret, with(Items.scrap, 1));
+            size = 3;
+            buildVisibility = BuildVisibility.hidden;
+        }};
 
         magmaticWall = new BurningWall("magmatic-wall"){{
             requirements(Category.defense, with(magmaticCrystal, 6));

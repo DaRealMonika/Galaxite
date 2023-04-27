@@ -2,14 +2,13 @@ package galaxite.content;
 
 import galaxite.content.abilities.HealUnits;
 import galaxite.content.abilities.MendBuildings;
+import galaxite.content.unittypes.MagmaticUnitType;
 import mindustry.ai.types.*;
 import mindustry.gen.BuildingTetherPayloadUnit;
 import mindustry.gen.Sounds;
 import mindustry.gen.TimedKillUnit;
 import mindustry.gen.UnitEntity;
 import mindustry.type.UnitType;
-
-import static galaxite.content.GalaxiteUtils.*;
 
 public class GalaxiteUnitTypes {
     public static UnitType
@@ -23,10 +22,9 @@ public class GalaxiteUnitTypes {
     heliDrop, comet;
 
     public static void load(){
-        ventur = new UnitType("ventur"){{
+        ventur = new MagmaticUnitType("ventur"){{
             aiController = BuilderAI::new;
             isEnemy = false;
-            outlineColor = magmaticOutline;
             lowAltitude = true;
             flying = true;
             mineSpeed = 3.5f;
@@ -44,16 +42,14 @@ public class GalaxiteUnitTypes {
             alwaysUnlocked = true;
             coreUnitDock = true;
             constructor = UnitEntity::create;
-            envDisabled = 0;
             fogRadius = 0f;
             range = 5f;
         }};
         ventur.abilities.add(new MendBuildings(30, 2.5f * 60f, ventur.range * 8));
 
-        passage = new UnitType("passage"){{
+        passage = new MagmaticUnitType("passage"){{
             aiController = BuilderAI::new;
             isEnemy = false;
-            outlineColor = magmaticOutline;
             lowAltitude = true;
             flying = true;
             mineSpeed = 3.5f;
@@ -71,16 +67,14 @@ public class GalaxiteUnitTypes {
             alwaysUnlocked = true;
             coreUnitDock = true;
             constructor = UnitEntity::create;
-            envDisabled = 0;
             fogRadius = 0f;
             range = 8f;
         }};
         passage.abilities.add(new HealUnits(30, 2.5f * 60f, passage.range * 8));
 
-        paradise = new UnitType("paradise"){{
+        paradise = new MagmaticUnitType("paradise"){{
             aiController = BuilderAI::new;
             isEnemy = false;
-            outlineColor = magmaticOutline;
             lowAltitude = true;
             flying = true;
             mineSpeed = 3.5f;
@@ -98,7 +92,6 @@ public class GalaxiteUnitTypes {
             alwaysUnlocked = true;
             coreUnitDock = true;
             constructor = UnitEntity::create;
-            envDisabled = 0;
             fogRadius = 0f;
             range = 16f;
         }};

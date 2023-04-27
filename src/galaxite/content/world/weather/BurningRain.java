@@ -1,6 +1,7 @@
 package galaxite.content.world.weather;
 
 import arc.math.Mathf;
+import arc.util.Log;
 import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.entities.Fires;
@@ -22,6 +23,11 @@ public class BurningRain extends RainWeather {
                 var x = Mathf.random(0, Vars.state.map.width);
                 var y = Mathf.random(0, Vars.state.map.height);
                 Tile tile = Vars.world.tileWorld(x, y);
+                Log.info("X: @", x);
+                Log.info("Y: @", y);
+                Log.info("Tile: @", tile);
+                Log.info("Tile X: @", tile.x);
+                Log.info("Tile Y: @", tile.y);
                 if (tile.block() != Blocks.air) Fires.create(tile);
             }
         }

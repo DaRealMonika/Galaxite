@@ -13,7 +13,7 @@ import static mindustry.content.TechTree.*;
 
 public class GalaxiteTechTree {
     public static void load() {
-        nodeRoot("Thrygatis", thrygatis, () -> {
+        thrygatis.techTree = nodeRoot("Thrygatis", thrygatis, () -> {
             node(moltenRain);
 
             nodeProduce(Items.scrap, () -> {

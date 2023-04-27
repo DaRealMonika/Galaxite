@@ -19,8 +19,8 @@ public class BurningRain extends RainWeather {
     public void update(WeatherState state) {
         if (this.isActive()) {
             if (Mathf.chance(state.intensity * amount) && !Vars.state.isPaused()) {
-                var x = Mathf.random(0, (float) Vars.state.map.width);
-                var y = Mathf.random(0, (float) Vars.state.map.height);
+                var x = Mathf.random(0, Vars.state.map.width);
+                var y = Mathf.random(0, Vars.state.map.height);
                 Tile tile = Vars.world.tileWorld(x, y);
                 if (tile.block() != Blocks.air) Fires.create(tile);
             }

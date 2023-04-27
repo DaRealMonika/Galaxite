@@ -36,7 +36,6 @@ public class GalaxitePlanets {
             accessible = true;
             iconColor = Color.valueOf("e1ba45");
         }};
-        vopovin.parent = null;
 
         thrygatis = new Planet("thrygatis", vopovin, 1, 2){{
             generator = new ThrygatisPlanetGenerator();

@@ -6,12 +6,12 @@ import mindustry.world.meta.Attribute;
 
 public class GalaxiteMod extends Mod{
 
-    public GalaxiteMod() {}
+    public GalaxiteMod() {
+        Attribute.add("ash");
+    }
 
     @Override
     public void loadContent(){
-        Attribute.add("ash");
-
         GalaxiteItems.load();
         GalaxiteLiquids.load();
         GalaxiteStatus.load();

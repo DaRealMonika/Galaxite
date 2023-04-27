@@ -33,7 +33,7 @@ public class GalaxiteBlocks {
 
     //turrets - Thrygatis
 
-    duster, kamiskyzer,
+    duster, kamiskyzer, multiTurret,
 
     //defence - Thrygatis
 
@@ -131,6 +131,10 @@ public class GalaxiteBlocks {
                     }}
             );
         }};
+
+        kamiskyzer = new LaserTurret("kamiskyzer");
+
+        multiTurret = new ItemTurret("multi-turret");
 
         magmaticWall = new BurningWall("magmatic-wall"){{
             requirements(Category.defense, with(magmaticCrystal, 6));
@@ -329,6 +333,7 @@ public class GalaxiteBlocks {
         magmaRefiner = new GenericCrafter("magma-refiner"){{
             requirements(Category.crafting, with(Items.scrap, 25, Items.graphite, 10, magmaticCrystal, 25));
             outputItem = new ItemStack(obsidian, 1);
+            craftEffect = Fx.smeltsmoke;
             craftTime = 180f;
             size = 2;
             hasPower = true;

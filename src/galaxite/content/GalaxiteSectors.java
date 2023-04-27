@@ -4,7 +4,7 @@ import mindustry.type.SectorPreset;
 
 import static galaxite.content.GalaxitePlanets.*;
 
-public class GalaxiteSctors {
+public class GalaxiteSectors {
     public static SectorPreset
 
     //thrygatis

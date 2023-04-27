@@ -11,7 +11,7 @@ public class BadConveyor extends Conveyor {
 
     public class BadConveyorBuild extends ConveyorBuild{
         public boolean pass(Item item){
-            if (item != null && this.next != null && this.next.team == this.team && (this.next.acceptItem(this, item) && Mathf.chance(0.2f))) {
+            if (item != null && this.next != null && this.next.team == this.team && (this.next.acceptItem(this, item) && Mathf.chance(0.5f))) {
                 this.next.handleItem(this, item);
                 return true;
             }

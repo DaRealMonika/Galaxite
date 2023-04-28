@@ -45,11 +45,11 @@ public class GalaxiteMod extends Mod{
 
                             table.add(Core.bundle.get("menu.galaxite-report-2.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
                 });
-                dialog.cont.button(Core.bundle.get("menu.galaxite-hideMenu"), () -> {
+                dialog.buttons.button(Core.bundle.get("menu.galaxite-hideMenu"), () -> {
                     dialog.hide();
                     mod.writeString("true");
                 }).size(210f, 64f);
-                dialog.cont.button("@close", dialog::hide).size(210, 64);
+                dialog.buttons.button("@close", dialog::hide).size(210, 64);
                 if (!hidden) dialog.show();
             });
         });

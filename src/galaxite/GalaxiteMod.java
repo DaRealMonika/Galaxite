@@ -31,7 +31,7 @@ public class GalaxiteMod extends Mod{
         GalaxiteTechTree.load();
 
         var mod = Vars.modDirectory.child("galaxite").child("main.txt");
-        if (!mod.exists() || (mod.readString().equals("true") || mod.readString().equals("false"))) mod.writeString("false");
+        if (!mod.exists()) mod.writeString("false");
         var hidden = parseBoolean(mod.readString());
 
         Events.on(EventType.ClientLoadEvent.class, e -> {

@@ -13,7 +13,7 @@ import static mindustry.content.TechTree.*;
 
 public class GalaxiteTechTree {
     public static void load() {
-        thrygatis.techTree = nodeRoot("Thrygatis", thrygatis, () -> {
+        thrygatis.techTree = nodeRoot("Thrygatis", aeriaton, () -> {
             node(moltenRain);
 
             nodeProduce(Items.scrap, () -> {
@@ -35,12 +35,9 @@ public class GalaxiteTechTree {
                 });
             });
 
-            node(aeriaton, () -> {/*
-                node(celestial, () -> {
-                    node(aether);
-                });*/
-            });
-
+            /*node(celestial, () -> {
+                node(aether);
+            });*/
 
             node(scrapConveyor, () -> {
                 node(magmaticDuct, () -> {

@@ -37,7 +37,7 @@ public class GalaxiteMod extends Mod{
         Events.on(EventType.ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galdaxite-report"));
+                BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galaxite-report"));
                 dialog.cont.pane(table -> {
                             table.image(Core.atlas.find("galaxite-planet")).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();
 

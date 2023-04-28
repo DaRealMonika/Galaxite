@@ -12,6 +12,8 @@ import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
 import galaxite.content.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.payloads.PayloadConveyor;
+import mindustry.world.blocks.payloads.PayloadRouter;
 import mindustry.world.blocks.power.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.*;
@@ -52,13 +54,17 @@ public class GalaxiteBlocks {
 
     ashCollector, scrapDrill, scrapBeamDrill, magmaticDrill, magmaticBeamDrill,
 
+    //units - Thrygatis
+
+    magmaticPayloadConveyor, magmaticPayloadRouter,
+
     //power - Thrygatis
 
-    magmaticBeamNode, magmaticBeamNodeLarge, payloadDecayGenerator, liquidGenerator,
+    magmaticBeamNode, magmaticBeamNodeLarge, payloadDecayGenerator, magmaticPumpDynamo,
 
     //factories - Thrygatis
 
-    magmaRefiner,
+    magmaRefiner, ashCompressor, crudeScrapper,
 
     //cores - Thrygatis
 
@@ -318,6 +324,24 @@ public class GalaxiteBlocks {
             laserColor2 = magmaticOutline;
         }};
 
+        magmaticPayloadConveyor = new PayloadConveyor("magmatic-payload-conveyor"){{
+            requirements(Category.units, with(magmaticCrystal, 10, obsidian, 30));
+            size = 3;
+            moveTime = 35f;
+            canOverdrive = false;
+            researchCostMultiplier = 5;
+            underBullets = true;
+        }};
+
+        magmaticPayloadRouter = new PayloadRouter("magmatic-payload-conveyor"){{
+            requirements(Category.units, with(magmaticCrystal, 15, obsidian, 30));
+            size = 3;
+            moveTime = 35f;
+            canOverdrive = false;
+            researchCostMultiplier = 5;
+            underBullets = true;
+        }};
+
         payloadDecayGenerator = new PayloadDecayGenerator("payload-decay-generator"){{
             requirements(Category.power, with(Items.scrap, 50, cinderAsh, 36));
             maxPayloadSize = 3f;
@@ -325,7 +349,7 @@ public class GalaxiteBlocks {
             size = 3;
         }};
 
-        liquidGenerator = new PowerPump("liquid-generator"){{
+        magmaticPumpDynamo = new PowerPump("magmatic-pump-dynamo"){{
             requirements(Category.power, with(Items.graphite, 25, magmaticCrystal, 40));
             powerProduction = 8f;
             pumpAmount = 5/60;
@@ -353,6 +377,27 @@ public class GalaxiteBlocks {
             consumeLiquid(magma, 0.2f);
         }};
 
+        ashCompressor = new GenericCrafter("ash-compressor"){{
+            requirements(Category.crafting, with(Items.scrap, 25, cinderAsh, 10));
+            craftEffect = Fx.pulverizeMedium;
+            outputItem = new ItemStack(Items.graphite, 1);
+            craftTime = 180f;
+            size = 2;
+            hasItems = true;
+            consumeItem(cinderAsh, 5);
+        }};
+        
+        crudeScrapper = new GenericCrafter("crude-scrapper"){{
+            requirements(Category.crafting, with(Items.scrap, 30, magmaticCrystal, 15));
+            craftEffect = Fx.pulverizeMedium;
+            outputItem = new ItemStack(metallicDust, 3);
+            craftTime = 90;
+            size = 2;
+            hasItems = true;
+            consumeItem(Items.scrap, 1);
+            consumePower(0.6f);
+        }};
+
         aeriaton = new CoreBlock("aeriaton"){{
             requirements(Category.effect, with(Items.scrap, 350, magmaticCrystal, 500));
             isFirstTier = true;
@@ -361,6 +406,7 @@ public class GalaxiteBlocks {
             itemCapacity = 2500;
             size = 2;
             unitCapModifier = 4;
+            alwaysUnlocked = true;
         }};
 
         celestial = new CoreBlock("celestial"){{

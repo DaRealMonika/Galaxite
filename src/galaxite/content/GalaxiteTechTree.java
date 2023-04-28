@@ -14,8 +14,12 @@ import static mindustry.content.TechTree.*;
 public class GalaxiteTechTree {
     public static void load() {
         thrygatis.techTree = nodeRoot("Thrygatis", aeriaton, () -> {
+            //weathers
+            
             node(moltenRain);
 
+            //resources
+            
             nodeProduce(Items.scrap, () -> {
                 nodeProduce(cinderAsh, () -> {
                     nodeProduce(Items.graphite, () -> {
@@ -34,11 +38,15 @@ public class GalaxiteTechTree {
                     });
                 });
             });
+            
+            //cores
 
             /*node(celestial, () -> {
                 node(aether);
             });*/
 
+            //transportation
+            
             node(scrapConveyor, () -> {
                 node(magmaticDuct, () -> {
                     node(magmaticBridge, () -> {
@@ -58,6 +66,9 @@ public class GalaxiteTechTree {
                     });
                 });
             });
+            
+            //production
+            
             node(ashCollector, () -> {
                 node(scrapDrill, () -> {
                     node(magmaticDrill, Seq.with(
@@ -69,24 +80,42 @@ public class GalaxiteTechTree {
                     });
                 });
             });
+            
+            //turrets
+            
             node(duster, () -> {/*
                 node(suffuse, () -> {
                     node(kamiskyzer, () -> {
                     });
                 };*/
             });
+            
+            //defense
+            
             node(magmaticWall, () -> {
                 node(magmaticWallLarge, () -> {
                 });
             });
+            
+            //power
+            
             node(payloadDecayGenerator, () -> {
                 node(magmaticBeamNode, () -> {
                     node(magmaticBeamNodeLarge, () -> {
                     });
                 });
-                node(liquidGenerator, () -> {
+                node(magmaticPumpDynamo, () -> {
                 });
-                node(magmaRefiner, () -> {
+            });
+            
+            //factories
+            
+            node(ashCompressor, () -> {
+                node(magmaRefiner, Seq.with(
+                        new Research(payloadDecayGenerator)), () -> {
+                    node(crudeScrapper, () -> {
+                        
+                    });
                 });
             });
         });

@@ -113,7 +113,7 @@ public class GalaxiteTechTree {
             node(ashCompressor, () -> {
                 node(magmaRefiner, Seq.with(
                         new Research(payloadDecayGenerator)), () -> {
-                    node(crudeScrapper, () -> {
+                    node(crudeGrinder, () -> {
                         
                     });
                 });

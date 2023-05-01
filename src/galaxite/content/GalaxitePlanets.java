@@ -35,6 +35,8 @@ public class GalaxitePlanets {
             bloom = true;
             accessible = true;
             iconColor = Color.valueOf("e1ba45");
+            alwaysUnlocked = true;
+            unlocked = true;
         }};
 
         thrygatis = new Planet("thrygatis", vopovin, 1, 2){{

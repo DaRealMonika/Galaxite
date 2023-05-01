@@ -144,6 +144,7 @@ public class GalaxiteBlocks {
             requirements(Category.turret, with(Items.scrap, 1));
             size = 2;
             buildVisibility = BuildVisibility.hidden;
+            consumeCoolant(0.1f);
         }};
 
         suffuse = new ItemTurret("suffuse"){{

@@ -333,7 +333,7 @@ public class GalaxiteBlocks {
             underBullets = true;
         }};
 
-        magmaticPayloadRouter = new PayloadRouter("magmatic-payload-conveyor"){{
+        magmaticPayloadRouter = new PayloadRouter("magmatic-payload-router"){{
             requirements(Category.units, with(magmaticCrystal, 15, obsidian, 30));
             size = 3;
             moveTime = 35f;

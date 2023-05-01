@@ -109,14 +109,10 @@ public class GalaxiteTechTree {
             });
             
             //factories
-            
-            node(ashCompressor, () -> {
-                node(magmaRefiner, Seq.with(
-                        new Research(payloadDecayGenerator)), () -> {
-                    node(crudeGrinder, () -> {
-                        
-                    });
-                });
+
+            node(magmaRefiner, Seq.with(
+                    new Research(payloadDecayGenerator)), () -> {
+                node(crudeGrinder, () -> {});
             });
         });
     }

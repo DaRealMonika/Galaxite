@@ -64,7 +64,7 @@ public class GalaxiteBlocks {
 
     //factories - Thrygatis
 
-    magmaRefiner, ashCompressor, crudeGrinder,
+    magmaRefiner, crudeGrinder,
 
     //cores - Thrygatis
 
@@ -375,16 +375,6 @@ public class GalaxiteBlocks {
             hasItems = true;
             consumePower(70f/60f);
             consumeLiquid(magma, 0.2f);
-        }};
-
-        ashCompressor = new GenericCrafter("ash-compressor"){{
-            requirements(Category.crafting, with(Items.scrap, 25, cinderAsh, 10));
-            craftEffect = Fx.pulverizeMedium;
-            outputItem = new ItemStack(Items.graphite, 1);
-            craftTime = 180f;
-            size = 2;
-            hasItems = true;
-            consumeItem(cinderAsh, 5);
         }};
         
         crudeGrinder = new GenericCrafter("crude-grinder"){{

@@ -269,7 +269,7 @@ public class GalaxiteBlocks {
         }};
 
         scrapDrill = new Drill("scrap-drill"){{
-            requirements(Category.distribution, with(Items.scrap, 5, cinderAsh, 9));
+            requirements(Category.production, with(Items.scrap, 5, cinderAsh, 9));
             tier = 2;
             drillTime = 430f;
             size = 1;
@@ -278,7 +278,7 @@ public class GalaxiteBlocks {
         }};
 
         scrapBeamDrill = new BeamDrill("scrap-beam-drill"){{
-            requirements(Category.distribution, with(Items.scrap, 5, cinderAsh, 9));
+            requirements(Category.production, with(Items.scrap, 5, cinderAsh, 9));
             tier = 2;
             drillTime = 180/0.5f;
             optionalBoostIntensity = 2f;
@@ -290,7 +290,7 @@ public class GalaxiteBlocks {
         }};
 
         magmaticDrill = new Drill("magmatic-drill"){{
-            requirements(Category.distribution, with(Items.graphite, 10, magmaticCrystal, 18));
+            requirements(Category.production, with(Items.graphite, 10, magmaticCrystal, 18));
             tier = 2;
             drillTime = 400f;
             size = 2;
@@ -298,7 +298,7 @@ public class GalaxiteBlocks {
         }};
 
         magmaticBeamDrill = new BeamDrill("magmatic-beam-drill"){{
-            requirements(Category.distribution, with(Items.scrap, 16, magmaticCrystal, 18));
+            requirements(Category.production, with(Items.scrap, 16, magmaticCrystal, 18));
             tier = 2;
             drillTime = 120/0.5f;
             optionalBoostIntensity = 4f;

@@ -1,5 +1,7 @@
 package galaxite.content;
 
+import arc.Core;
+import galaxite.content.statuseffects.VisualStatusEffect;
 import mindustry.type.StatusEffect;
 
 public class GalaxiteStatus {
@@ -18,6 +20,10 @@ public class GalaxiteStatus {
             buildSpeedMultiplier = 0.8f;
         }};
 
-        targeted = new StatusEffect("targeted");
+        targeted = new VisualStatusEffect("targeted"){{
+            rotate = true;
+            sprite = Core.atlas.find("command-rally");
+            rotateSpeed = 30f;
+        }};
     }
 }

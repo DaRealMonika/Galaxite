@@ -36,6 +36,8 @@ public class GalaxiteMod extends Mod{
         var hidden = parseBoolean(mod.readString());
 
         Events.on(EventType.ClientLoadEvent.class, e -> {
+            GalaxiteStatus.targeted.fullIcon = Icon.commandRally.getRegion();
+            GalaxiteStatus.targeted.uiIcon = Icon.commandRally.getRegion();
             //show dialog upon startup
             Time.runTask(10f, () -> {
                 BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galaxite-report"));

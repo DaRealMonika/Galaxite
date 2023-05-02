@@ -32,8 +32,8 @@ public class GalaxiteStatus {
             rotateSpeed = 30f;
             spriteColor = Color.valueOf("dc2949");
             // TODO make and add sprite for targeted
-            uiIcon = Icon.commandRally.getRegion();
-            fullIcon = Icon.commandRally.getRegion();
+            /*uiIcon = Icon.commandRally.getRegion();
+            fullIcon = Icon.commandRally.getRegion();*/
         }};
     }
 }

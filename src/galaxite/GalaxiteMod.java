@@ -36,17 +36,17 @@ public class GalaxiteMod extends Mod{
         var hidden = parseBoolean(mod.readString());
 
         Events.on(EventType.ClientLoadEvent.class, e -> {
-            GalaxiteStatus.targeted.fullIcon = Icon.commandRally.getRegion();
-            GalaxiteStatus.targeted.uiIcon = Icon.commandRally.getRegion();
             //show dialog upon startup
             Time.runTask(10f, () -> {
+                GalaxiteStatus.targeted.fullIcon = Icon.commandRally.getRegion();
+                GalaxiteStatus.targeted.uiIcon = Icon.commandRally.getRegion();
                 BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galaxite-report"));
                 dialog.cont.pane(table -> {
-                            table.image(Icon.planet.getRegion()).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();
+                    table.image(Icon.planet.getRegion()).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();
 
-                            table.add(Core.bundle.get("menu.galaxite-report-1.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
+                    table.add(Core.bundle.get("menu.galaxite-report-1.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
 
-                            table.add(Core.bundle.get("menu.galaxite-report-2.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
+                    table.add(Core.bundle.get("menu.galaxite-report-2.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
                 });
                 dialog.buttons.button(Core.bundle.get("menu.galaxite-hideMenu"), () -> {
                     dialog.hide();

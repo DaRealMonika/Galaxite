@@ -4,6 +4,7 @@ import arc.*;
 import arc.util.*;
 import mindustry.Vars;
 import mindustry.game.*;
+import mindustry.gen.*;
 import mindustry.mod.*;
 import galaxite.content.*;
 import mindustry.ui.dialogs.*;
@@ -39,7 +40,7 @@ public class GalaxiteMod extends Mod{
             Time.runTask(10f, () -> {
                 BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galaxite-report"));
                 dialog.cont.pane(table -> {
-                            table.image(Core.atlas.find("galaxite-planet")).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();
+                            table.image(Icon.planet.getRegion()).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();
 
                             table.add(Core.bundle.get("menu.galaxite-report-1.sub")).left().growX().wrap().width(420).maxWidth(420).pad(4).labelAlign(Align.left).row();
 

@@ -38,8 +38,10 @@ public class GalaxiteMod extends Mod{
         Events.on(EventType.ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                GalaxiteStatus.targeted.fullIcon = Icon.commandRally.getRegion();
-                GalaxiteStatus.targeted.uiIcon = Icon.commandRally.getRegion();
+                if (Icon.commandRally != null) {
+                    GalaxiteStatus.targeted.fullIcon = Icon.commandRally.getRegion();
+                    GalaxiteStatus.targeted.uiIcon = Icon.commandRally.getRegion();
+                }
                 BaseDialog dialog = new BaseDialog(Core.bundle.get("menu.galaxite-report"));
                 dialog.cont.pane(table -> {
                     table.image(Icon.planet.getRegion()).color(GalaxitePlanets.vopovin.iconColor).size(64, 64).pad(3).row();

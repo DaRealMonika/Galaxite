@@ -1,9 +1,8 @@
 package galaxite.content;
 
-import arc.graphics.Color;
-import galaxite.content.statuseffects.VisualStatusEffect;
-import mindustry.gen.Icon;
-import mindustry.type.StatusEffect;
+import arc.graphics.*;
+import galaxite.content.statuseffects.*;
+import mindustry.type.*;
 
 import static galaxite.content.GalaxiteLiquids.*;
 
@@ -28,7 +27,7 @@ public class GalaxiteStatus {
 
         targeted = new VisualStatusEffect("targeted"){{
             rotate = true;
-            sprite = Icon.commandRally.getRegion();
+            sprite = "commandRally";
             rotateSpeed = 30f;
             spriteColor = Color.valueOf("dc2949");
             // TODO make and add sprite for targeted

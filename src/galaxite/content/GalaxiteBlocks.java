@@ -145,12 +145,14 @@ public class GalaxiteBlocks {
             size = 2;
             buildVisibility = BuildVisibility.hidden;
             consumeCoolant(0.1f);
+            drawer = new DrawTurret("reinforced-");
         }};
 
         suffuse = new ItemTurret("suffuse"){{
             requirements(Category.turret, with(Items.scrap, 1));
             size = 3;
             buildVisibility = BuildVisibility.hidden;
+            drawer = new DrawTurret("reinforced-");
         }};
 
         magmaticWall = new BurningWall("magmatic-wall"){{
@@ -348,6 +350,7 @@ public class GalaxiteBlocks {
             maxPayloadSize = 3f;
             deconstructSpeed = 2.5f;
             size = 3;
+            regionSuffix = "-magmatic";
         }};
 
         magmaticPumpDynamo = new PowerPump("magmatic-pump-dynamo"){{

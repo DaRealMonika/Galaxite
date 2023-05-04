@@ -1,5 +1,6 @@
 package galaxite.content.statuseffects;
 
+import arc.Core;
 import arc.graphics.Color;
 import arc.graphics.g2d.*;
 import arc.math.*;
@@ -9,7 +10,7 @@ import mindustry.type.StatusEffect;
 
 public class VisualStatusEffect extends StatusEffect {
     public static Boolean rotate;
-    public static TextureRegion sprite;
+    public static String sprite;
     public static Float rotateSpeed;
     public static Color spriteColor;
 
@@ -20,7 +21,10 @@ public class VisualStatusEffect extends StatusEffect {
     @Override
     public void update(Unit unit, float time){
         super.update(unit, time);
+        var Sprite = Core.atlas.find(sprite);
+        Sprite = Icon.icons.get(sprite) != null ? (TextureAtlas.AtlasRegion) Icon.icons.get(sprite).getRegion() : Core.atlas.find(sprite);
+
         if (spriteColor != null) Draw.color(spriteColor);
-        Draw.rect(sprite, unit.x + Angles.trnsx(unit.rotation, 0, 0), unit.y + Angles.trnsy(unit.rotation, 0, 0), Time.time * rotateSpeed);
+        Draw.rect(Sprite, unit.x + Angles.trnsx(unit.rotation, 0, 0), unit.y + Angles.trnsy(unit.rotation, 0, 0), Time.time * rotateSpeed);
     }
 }

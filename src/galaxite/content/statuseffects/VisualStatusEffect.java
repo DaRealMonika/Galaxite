@@ -13,7 +13,7 @@ public class VisualStatusEffect extends StatusEffect {
     public static String sprite;
     public static Float rotateSpeed;
     public static Color spriteColor;
-    private static TextureRegion region;
+    public static TextureRegion region;
 
     public VisualStatusEffect(String name){
         super(name);

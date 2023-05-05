@@ -28,7 +28,7 @@ public class GalaxiteStatus {
         targeted = new VisualStatusEffect("targeted"){{
             rotate = true;
             sprite = "commandRally";
-            rotateSpeed = 30f;
+            rotateSpeed = 8f;
             spriteColor = Color.valueOf("dc2949");
             // TODO make and add sprite for targeted
             /*uiIcon = Icon.commandRally.getRegion();

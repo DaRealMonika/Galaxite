@@ -30,6 +30,6 @@ public class VisualStatusEffect extends StatusEffect {
         super.draw(unit, time);
 
         if (spriteColor != null) Draw.color(spriteColor);
-        Draw.rect(region, unit.x + Angles.trnsx(unit.rotation, 0, 0), unit.y + Angles.trnsy(unit.rotation, 0, 0), unit.hitSize / 8, unit.hitSize / 8, Time.time * rotateSpeed);
+        Draw.rect(region, unit.x + Angles.trnsx(unit.rotation, 0, 0), unit.y + Angles.trnsy(unit.rotation, 0, 0), unit.hitSize, unit.hitSize, Time.time * rotateSpeed);
     }
 }

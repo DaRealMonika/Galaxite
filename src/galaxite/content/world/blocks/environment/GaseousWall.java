@@ -28,7 +28,7 @@ public class GaseousWall extends StaticWall {
             super.updateTile();
             if (spreadGas != null && counter >= 1) {
                 for(int i = -spreadRadius; i < spreadRadius; i++) {
-                    for(int n = -spreadRadius; i < spreadRadius; n++) {
+                    for(int n = -spreadRadius; n < spreadRadius; n++) {
                         Tile tile = Vars.world.tileWorld(x + i, y + n);
                         if (tile != null && (tile.block() == Blocks.air || tile.block().underBullets)) {
 //                            spreadGas.vaporEffect.at(tile.x, tile.y);

@@ -40,7 +40,7 @@ public class GaseousWall extends StaticWall {
             }
             counter += 0.05;
             Units.nearby(x, y, spreadRadius, spreadRadius, unit -> {
-                if (unit.tileOn() != null && (unit.tileOn().block() == Blocks.air || unit.tileOn().block().underBullets) && (unit instanceof Mechc || unit.type.lowAltitude)) {
+                if (unit.tileOn() != null && (unit.tileOn().block() == Blocks.air || unit.tileOn().block().underBullets) && unit.elevation <= 0.5f) {
                     unit.apply(infested);
                 }
             });

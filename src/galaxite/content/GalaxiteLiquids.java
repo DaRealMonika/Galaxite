@@ -1,8 +1,10 @@
 package galaxite.content;
 
-import arc.graphics.Color;
-import mindustry.content.StatusEffects;
-import mindustry.type.Liquid;
+import arc.graphics.*;
+import mindustry.content.*;
+import mindustry.type.*;
+
+import static galaxite.content.GalaxiteStatus.*;
 
 public class GalaxiteLiquids {
     public static Liquid
@@ -13,23 +15,30 @@ public class GalaxiteLiquids {
 
     //gas - Thrygatis
 
-    aethephus;
+    scoriaVapor, ferventilisSpores;
 
     public static void load(){
         magma = new Liquid("magma", Color.valueOf("f15454")){{
             effect = StatusEffects.melting;
             viscosity = 0.8f;
             heatCapacity = 0.2f;
-            temperature = 1f;
+            temperature = 1.8f;
             flammability = 1f;
             capPuddles = false;
             coolant = false;
         }};
 
-        aethephus = new Liquid("aethephus", Color.valueOf("ffcfad")){{
+        scoriaVapor = new Liquid("scoria-vapor", Color.valueOf("ffcfad")){{
             gas = true;
             effect = StatusEffects.burning;
             temperature = 0.67f;
+            coolant = false;
+        }};
+
+        ferventilisSpores = new Liquid("ferventilis-spores", Color.valueOf("9be04b")){{
+            gas = true;
+            effect = infested;
+            coolant = false;
         }};
     }
 }

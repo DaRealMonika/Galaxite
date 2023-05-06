@@ -11,7 +11,7 @@ public class GalaxiteStatus {
 
     //special - Thrygatis
 
-    magmaticBooster, targeted;
+    magmaticBooster, targeted, infested;
 
     public static void load() {
         magmaticBooster = new StatusEffect("magmatic-booster"){{
@@ -20,9 +20,6 @@ public class GalaxiteStatus {
             speedMultiplier = 1.4f;
             reloadMultiplier = 1.23f;
             buildSpeedMultiplier = 0.8f;
-            // TODO make and add sprite for magmatic booster
-            uiIcon = magma.uiIcon;
-            fullIcon = magma.fullIcon;
         }};
 
         targeted = new VisualStatusEffect("targeted"){{
@@ -30,9 +27,15 @@ public class GalaxiteStatus {
             sprite = "commandRally";
             rotateSpeed = 8f;
             spriteColor = Color.valueOf("dc2949");
-            // TODO make and add sprite for targeted
-            /*uiIcon = Icon.commandRally.getRegion();
-            fullIcon = Icon.commandRally.getRegion();*/
+            color = Color.valueOf("dc2949");
+        }};
+
+        infested = new VirusStatusEffect("infested"){{
+            damage = 0.01f;
+            speedMultiplier = 0.8f;
+            damageMultiplier = 1.2f;
+            reloadMultiplier = 0.7f;
+            permanent = true;
         }};
     }
 }

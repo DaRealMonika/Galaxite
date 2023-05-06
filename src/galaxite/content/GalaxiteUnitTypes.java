@@ -1,14 +1,10 @@
 package galaxite.content;
 
-import galaxite.content.abilities.HealUnits;
-import galaxite.content.abilities.MendBuildings;
-import galaxite.content.unittypes.MagmaticUnitType;
+import galaxite.content.abilities.*;
+import galaxite.content.unittypes.*;
 import mindustry.ai.types.*;
-import mindustry.gen.BuildingTetherPayloadUnit;
-import mindustry.gen.Sounds;
-import mindustry.gen.TimedKillUnit;
-import mindustry.gen.UnitEntity;
-import mindustry.type.UnitType;
+import mindustry.gen.*;
+import mindustry.type.*;
 
 public class GalaxiteUnitTypes {
     public static UnitType

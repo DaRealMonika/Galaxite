@@ -1,19 +1,19 @@
 package galaxite.content;
 
+import galaxite.content.world.blocks.environment.*;
 import galaxite.content.world.blocks.power.*;
 import galaxite.content.world.blocks.walls.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.gen.Sounds;
-import mindustry.graphics.CacheLayer;
+import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.distribution.*;
 import galaxite.content.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.*;
-import mindustry.world.blocks.payloads.PayloadConveyor;
-import mindustry.world.blocks.payloads.PayloadRouter;
+import mindustry.world.blocks.payloads.*;
 import mindustry.world.blocks.power.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.*;
@@ -22,17 +22,18 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
 import static galaxite.content.GalaxiteItems.*;
+import static galaxite.content.GalaxiteStatus.*;
 import static galaxite.content.GalaxiteUnitTypes.*;
 import static galaxite.content.GalaxiteLiquids.*;
 import static galaxite.content.GalaxiteUtils.*;
-import static mindustry.type.ItemStack.with;
+import static mindustry.type.ItemStack.*;
 
 public class GalaxiteBlocks {
     public static Block
 
     //region environment - Thrygatis
 
-    ashWall, ashFloor, ashBoulder, redGraphiticWall, magmaFloor, oreMagmaticCrystal, wallOreMagmaticCrystal,
+    ashWall, ashFloor, ashBoulder, redGraphiticWall, magmaFloor, oreMagmaticCrystal, wallOreMagmaticCrystal, ferventilisSporesWall,
 
     //turrets - Thrygatis
 
@@ -107,7 +108,7 @@ public class GalaxiteBlocks {
             status = StatusEffects.melting;
             statusDuration = 240f;
             liquidDrop = magma;
-            mapColor = magma.color;
+            mapColor = magma.color.cpy();
             isLiquid = true;
             cacheLayer = CacheLayer.water;
             albedo = 0.25f;
@@ -118,6 +119,12 @@ public class GalaxiteBlocks {
             emitLight = true;
             lightRadius = 40f;
             lightColor = Liquids.slag.lightColor;
+        }};
+
+        ferventilisSporesWall = new GaseousWall("red-gaseous-wall"){{
+            effect = infested;
+            spreadGas = ferventilisSpores;
+            spreadRadius = 4;
         }};
 
         duster = new ItemTurret("duster"){{
@@ -241,7 +248,7 @@ public class GalaxiteBlocks {
             size = 3;
             researchCostMultiplier = 1.5f;
             consumePower(8/60f);
-            consumeLiquids(LiquidStack.with(magma, 0.1f, aethephus , 0.1f));
+            consumeLiquids(LiquidStack.with(magma, 0.1f, scoriaVapor , 0.1f));
         }};
 
         collectingPad = new UnitCargoUnloadPoint("collecting-pad"){{

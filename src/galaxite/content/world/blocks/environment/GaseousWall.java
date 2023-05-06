@@ -21,19 +21,22 @@ public class GaseousWall extends StaticWall {
     }
 
     public class GaseousWallBuild extends Building {
+        private static float counter = 0.0f;
         @Override
         public void updateTile() {
             super.updateTile();
-            if (spreadGas != null) {
+            if (spreadGas != null && counter >= 1) {
                 for(int i = -spreadRadius; i < spreadRadius; i++) {
                     for(int n = -spreadRadius; i < spreadRadius; n++) {
                         Tile tile = Vars.world.tileWorld(x + i, y + n);
                         if (tile != null && (tile.block() == Blocks.air || tile.block().underBullets)) {
                             spreadGas.vaporEffect.at(tile.x, tile.y);
                         }
+                        counter = 0.0f;
                     }
                 }
             }
+            counter += 0.05;
             Units.nearby(x, y, spreadRadius, spreadRadius, unit -> {
                 if (unit.tileOn() != null && (unit.tileOn().block() == Blocks.air || unit.tileOn().block().underBullets) && (unit instanceof Mechc || unit.type.lowAltitude)) {
                     unit.apply(infested);

@@ -1,5 +1,6 @@
 package galaxite.content.world.blocks.environment;
 
+import arc.util.Log;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.entities.*;
@@ -30,7 +31,8 @@ public class GaseousWall extends StaticWall {
                     for(int n = -spreadRadius; i < spreadRadius; n++) {
                         Tile tile = Vars.world.tileWorld(x + i, y + n);
                         if (tile != null && (tile.block() == Blocks.air || tile.block().underBullets)) {
-                            spreadGas.vaporEffect.at(tile.x, tile.y);
+//                            spreadGas.vaporEffect.at(tile.x, tile.y);
+                            Log.info("spread gas vfx");
                         }
                         counter = 0.0f;
                     }

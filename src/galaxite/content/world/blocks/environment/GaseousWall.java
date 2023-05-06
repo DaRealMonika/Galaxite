@@ -21,7 +21,7 @@ public class GaseousWall extends StaticWall {
     }
 
     public class GaseousWallBuild extends Building {
-        private static float counter = 0.0f;
+        private float counter = 0.0f;
         @Override
         public void updateTile() {
             super.updateTile();

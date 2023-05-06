@@ -27,7 +27,7 @@ public class GalaxiteTechTree {
                             nodeProduce(metallicDust, () -> {
                             });
                             nodeProduce(Liquids.slag, () -> {
-                                nodeProduce(aethephus, () -> {
+                                nodeProduce(scoriaVapor, () -> {
                                 });
                             });
                             nodeProduce(magma, () -> {
@@ -41,7 +41,7 @@ public class GalaxiteTechTree {
             
             //cores
 
-            /*node(celestial, () -> {
+            /*node(celestial, () -> { TODO set the final resources and resource cost of cores and make them visible
                 node(aether);
             });*/
 

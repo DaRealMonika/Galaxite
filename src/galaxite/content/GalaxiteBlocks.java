@@ -1,11 +1,15 @@
 package galaxite.content;
 
+import arc.graphics.*;
 import galaxite.content.world.blocks.environment.*;
 import galaxite.content.world.blocks.power.*;
+import galaxite.content.world.blocks.turrets.*;
 import galaxite.content.world.blocks.walls.*;
+import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
-import mindustry.gen.Sounds;
+import mindustry.entities.effect.*;
+import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -33,7 +37,7 @@ public class GalaxiteBlocks {
 
     //region environment - Thrygatis
 
-    ashWall, ashFloor, ashBoulder, redGraphiticWall, magmaFloor, oreMagmaticCrystal, wallOreMagmaticCrystal, ferventilisSporesWall,
+    ashWall, ashFloor, ashBoulder, redGraphiticWall, magmaFloor, oreMagmaticCrystal, wallOreMagmaticCrystal, redGaseousWall,
 
     //turrets - Thrygatis
 
@@ -121,7 +125,7 @@ public class GalaxiteBlocks {
             lightColor = Liquids.slag.lightColor;
         }};
 
-        ferventilisSporesWall = new GaseousWall("red-gaseous-wall"){{
+        redGaseousWall = new GaseousWall("red-gaseous-wall"){{
             effect = infested;
             spreadGas = ferventilisSpores;
             spreadRadius = 4;
@@ -147,19 +151,82 @@ public class GalaxiteBlocks {
             );
         }};
 
-        kamiskyzer = new LaserTurret("kamiskyzer"){{
+        kamiskyzer = new UnitLaserTurret("kamiskyzer"){{
             requirements(Category.turret, with(Items.scrap, 1));
+            unitType = comet;
+            unitConsPower = 0.6f;
+            unitCap = 3;
+            buildTime = 60 * 8;
             size = 2;
+            scaledHealth = 280f;
+            itemCapacity = 30;
+            hasItems = true;
+            liquidCapacity = 10;
+            hasLiquids = true;
+            range = 165f;
+            recoil = 2f;
+            reload = 40f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red.cpy();
+            targetAir = true;
+            moveWhileCharging = true;
+            accurateDelay = false;
+            shootSound = Sounds.laser;
             buildVisibility = BuildVisibility.hidden;
             consumeCoolant(0.1f);
+            consumePower(0.6f);
             drawer = new DrawTurret("reinforced-");
+            shootType = (
+                    new LaserBulletType(14f){{
+                        colors = new Color[]{magmaticCrystal.color.cpy().a(0.4f), magmaticCrystal.color.cpy(), Color.white.cpy()};
+                        chargeEffect = new MultiEffect(
+                                Fx.lancerLaserCharge,
+                                Fx.lancerLaserChargeBegin
+                        );
+                        buildingDamageMultiplier = 0.25f;
+                        hitEffect = Fx.hitLancer;
+                        hitSize = 4f;
+                        lifetime = 16f;
+                        drawSize = 400f;
+                        collidesAir = true;
+                        length = 173f;
+                        ammoMultiplier = 1f;
+                        pierceCap = 6;
+                        status = targeted;
+                        statusDuration = 60 * 12;
+                    }}
+            );
         }};
 
-        suffuse = new ItemTurret("suffuse"){{
+        suffuse = new MultiItemTurret("suffuse"){{
             requirements(Category.turret, with(Items.scrap, 1));
             size = 3;
             buildVisibility = BuildVisibility.hidden;
+            consumeCoolant(0.6f);
             drawer = new DrawTurret("reinforced-");
+            ammo(
+                    magmaticCrystal, new BulletType(10f, 30f){{
+                        ammoMultiplier = 3f;
+                        shootEffect = Fx.shootBig;
+                        pierce = true;
+                        pierceCap = 5;
+                        lightRadius = 3 * Vars.tilesize;
+                        lightColor = magmaticCrystal.color.cpy();
+                        rangeOverride = 18 * Vars.tilesize;
+                    }},
+
+                    metallicDust , new BulletType(5f, 10f){{
+                        ammoMultiplier = 10f;
+                        reloadMultiplier = 3f;
+                        buildingDamageMultiplier = 0f;
+                        shootEffect = Fx.shootBigSmoke;
+                        pierce = true;/*
+                        pierceCap = (int) Float.POSITIVE_INFINITY;*/
+                        rangeOverride = 8 * Vars.tilesize;
+                    }}
+            );
         }};
 
         magmaticWall = new BurningWall("magmatic-wall"){{

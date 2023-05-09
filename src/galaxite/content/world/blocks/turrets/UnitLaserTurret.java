@@ -13,6 +13,8 @@ import mindustry.ui.Fonts;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
 
+import java.util.function.Consumer;
+
 public class UnitLaserTurret extends LaserTurret { // TODO finish me
     public static UnitType unitType;
     public static float unitConsPower;
@@ -21,6 +23,7 @@ public class UnitLaserTurret extends LaserTurret { // TODO finish me
     public static float polyStroke = 1.8f, polyRadius = 8f;
     public static int polySides = 6;
     public static float polyRotateSpeed = 1f;
+    private static int u = 0;
 
     public UnitLaserTurret(String name){
         super(name);
@@ -30,12 +33,11 @@ public class UnitLaserTurret extends LaserTurret { // TODO finish me
     public void setBars() {
         super.setBars();
 
-        int u = 0;
-        (UnitLaserTurretBuild e) -> {
+        Consumer<UnitLaserTurretBuild> unitLaserTurretBuildConsumer = (UnitLaserTurretBuild e) -> {
             for (int i = 0; i < unitCap; i++) {
                 if (e.unit[i] != null) u++;
             }
-        }
+        };
 
         addBar("units", (UnitLaserTurretBuild e) ->
                 new Bar(

@@ -284,6 +284,7 @@ public class GalaxiteBlocks {
             requirements(Category.distribution, with(Items.scrap, 1, magmaticCrystal, 1));
             health = 50;
             speed = 7f;
+            bridgeReplacement = magmaticBridge;
         }};
 
         magmaticBridge = new DuctBridge("magmatic-bridge"){{
